@@ -10,32 +10,8 @@ index 52725edc..e6611e2a 100644
  /out
  /CMakeSettings.json
  
-diff --git a/.vscode/c_cpp_properties.json b/.vscode/c_cpp_properties.json
-new file mode 100644
-index 00000000..10266f5c
---- /dev/null
-+++ b/.vscode/c_cpp_properties.json
-@@ -0,0 +1,17 @@
-+{
-+    "configurations": [
-+        {
-+            "name": "Linux",
-+            "includePath": [
-+                "${workspaceFolder}/**",
-+                "${VITASDK}/**"
-+            ],
-+            "defines": [],
-+            "compilerPath": "/usr/bin/clang",
-+            "cStandard": "c17",
-+            "cppStandard": "c++14",
-+            "intelliSenseMode": "linux-clang-x64"
-+        }
-+    ],
-+    "version": 4
-+}
-\ No newline at end of file
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1d075d49..b2f261c0 100644
+index 1d075d49..f8c52cbf 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1,9 +1,5 @@
@@ -641,7 +617,7 @@ index 1d075d49..b2f261c0 100644
 -		RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO ${BUILD_DIRECTORY}
 -		RUNTIME_OUTPUT_DIRECTORY_DEBUG ${BUILD_DIRECTORY}
 +if(JAPANESE)
-+	vita_create_vpk(${PROJECT_NAME}.vpk ${VITA_TITLEID} ${PROJECT_NAME}.self
++	vita_create_vpk(${PROJECT_NAME}JP.vpk ${VITA_TITLEID} ${PROJECT_NAME}.self
 +	  VERSION ${VITA_VERSION}
 +	  NAME ${VITA_APP_NAME}
 +	  FILE sce_sys/icon0.png sce_sys/icon0.png
@@ -12921,7 +12897,7 @@ index 0459ac98..8bf86630 100644
  {
  	COLL_LEFT_WALL = 1,     // Touching a left wall
 diff --git a/src/Config.cpp b/src/Config.cpp
-index 6bd088d9..89f4a75d 100644
+index 6bd088d9..02ce6a75 100644
 --- a/src/Config.cpp
 +++ b/src/Config.cpp
 @@ -78,12 +78,21 @@ void DefaultConfigData(CONFIGDATA *conf)
@@ -12948,8 +12924,8 @@ index 6bd088d9..89f4a75d 100644
 +	conf->joystick_button[9] = 8; // Right
 +	conf->joystick_button[10] = 5; // map
 +	conf->joystick_button[11] = 4; // item
-+	conf->joystick_button[12] = 0;
-+	conf->joystick_button[13] = 0;
++	conf->joystick_button[12] = 6; // ARM L
++	conf->joystick_button[13] = 3; // ARM R
 +	conf->joystick_button[14] = 0;
 +	conf->joystick_button[15] = 0;
 +	conf->joystick_button[16] = 0;
